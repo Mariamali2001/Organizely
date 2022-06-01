@@ -52,11 +52,10 @@ export default function HomeScreen({navigation}) {
       fontWeight: "400",
       marginLeft:150,
       marginTop:20,
-      opacity:'.20'
-    }} >
+      opacity:0.20}} >
 
-       Let's get started
-    </Text>
+      Let's get started
+     </Text>
      </TouchableOpacity>
       </View>
       <StatusBar style="auto" />
@@ -72,4 +71,5 @@ const styles = StyleSheet.create({
     color:'#242423',
     justifyContent: "center",
   },
+  
 });
