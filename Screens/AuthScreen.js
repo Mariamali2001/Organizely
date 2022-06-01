@@ -15,8 +15,8 @@ export default function AuthScreen() {
 
   const [request, response, promptAsync] = Google.useAuthRequest({
     androidClientId: "",
-    iosClientId: "",
-    expoClientId: ""
+    iosClientId: "242080826208-riitrtfpcj94sd3cd99dgfqqvp2v143o.apps.googleusercontent.com",
+    expoClientId: "242080826208-ndd429mfcv2gkdhmft1jg8qm6v5i5agh.apps.googleusercontent.com",
   });
 
   React.useEffect(() => {

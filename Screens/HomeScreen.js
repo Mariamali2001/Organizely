@@ -41,17 +41,23 @@ export default function HomeScreen({navigation}) {
 
       <Image  style={{ height:40,width:60,marginLeft: 250}}
             source={require('../assets/arrow.png')}/>
-            <Text style={{
-            fontSize: 20,
-            fontWeight: "400",
-            marginLeft:150,
-            marginTop:20,
-            opacity:'.20'
-          }} >
-
-             Let's get started
-          </Text>
+           
       </TouchableOpacity>
+
+      <TouchableOpacity onPress={() => navigation.navigate('CreateTodo')} >
+
+
+      <Text style={{
+      fontSize: 20,
+      fontWeight: "400",
+      marginLeft:150,
+      marginTop:20,
+      opacity:'.20'
+    }} >
+
+       Let's get started
+    </Text>
+     </TouchableOpacity>
       </View>
       <StatusBar style="auto" />
     </View>

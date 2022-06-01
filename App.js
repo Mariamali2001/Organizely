@@ -4,6 +4,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import HomeScreen from "./Screens/HomeScreen";
 import AuthScreen from "./Screens/AuthScreen";
+import CreateTodo from "./Screens/CreateTodo";
 
 const Stack = createNativeStackNavigator();
 
@@ -19,6 +20,11 @@ export default function App() {
         <Stack.Screen
           name="AuthScreen"
           component={AuthScreen}
+          options={{ headerShown: true }}
+        />
+         <Stack.Screen
+          name="CreateTodo"
+          component={CreateTodo}
           options={{ headerShown: true }}
         />
       </Stack.Navigator>
