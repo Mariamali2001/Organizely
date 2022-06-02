@@ -1,8 +1,8 @@
 import React from 'react';
 import { View, StyleSheet, Text ,TouchableOpacity, FlatList, Modal} from 'react-native';
 import {AntDesign} from '@expo/vector-icons';
-import TodoList from './components/TodoList';
-import AddListModal from "./components/AddListModal";
+import TodoList from '../components/AddListModal';
+import AddListModal from "../components/AddListModal";
 import tempData from '../tempData';
 export default class CreateTodo extends React.Component {
   state ={
