@@ -1,7 +1,7 @@
 import React from "react";
 import {View,StyleSheet,Text,TouchableOpacity,KeyboardAvoidingView,TextInput,} from "react-native";
 import { AntDesign } from "@expo/vector-icons";
-import tempData from "../../tempData";
+// import tempData from "../tempData";
 
 export default class AddListModal extends React.Component {
     backgroundColors=["#3C6E71","#F5CB5C" , "#8ecae6" ,"#353535", "#D9D9D9","#284B63"]
