@@ -51,10 +51,47 @@ export default function AuthScreen() {
   return (
     <View style={styles.container}>
       {showUserInfo()}
-      <Button 
-        title={accessToken ? "Get User Data" : "Login"}
-        onPress={accessToken ? getUserData : () => { promptAsync({useProxy: false, showInRecents: true}) }}
-      />
+      <View style={{ flexDirection: "row"}}>
+      
+        <View style={styles.divider} />
+        <Text style={{ fontWeight: "500", color: "#284B63" }}>
+          {" "}
+          WELCOME TO <Text style={styles.title}>ORGANIZELY</Text>
+        </Text>
+
+        <View style={styles.divider} />
+      </View>
+      <Text>
+        {"\n "}
+        {"\n "}
+        {"\n "}
+        {"\n "}
+        {"\n "}
+        {"\n "}
+        {"\n "}
+      </Text>
+      <TouchableOpacity>
+        <AwesomeButton
+          backgroundColor="#333533"
+          width={150}
+          onPress={
+            accessToken
+              ? getUserData
+              : () => {
+                  promptAsync({ useProxy: false, showInRecents: true });
+                }
+          }
+        >
+          
+          <Text style={{ color: "#fff" }}>
+            {accessToken ? "Get User Data" : "Sign in by Google"}{" "}
+          </Text>
+          <Image
+            style={{ height: 20, width: 20 }}
+            source={require("../assets/google.png")}
+          />
+        </AwesomeButton>
+      </TouchableOpacity>
       <StatusBar style="auto" />
     </View>
   );
