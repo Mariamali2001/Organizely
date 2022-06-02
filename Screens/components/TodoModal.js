@@ -1,6 +1,7 @@
 import React from "react";
 import {View,StyleSheet,Text,TouchableOpacity,FlatList,SafeAreaView,KeyboardAvoidingView,keyboard,TextInput} from "react-native";
 import { AntDesign ,Ionicons} from "@expo/vector-icons";
+import { MaterialIcons } from '@expo/vector-icons';
 
 
 
@@ -26,20 +27,41 @@ export default class TodoModal extends React.Component {
          keyboard.dismiss()  
     }
 
+    deleteTodo=index=>{
+        // this.setState({lists: [...this.state.lists,{...list, id :this.state.lists.length -1,todos:[] }]})
+        let list=this.props.list
+        list.todos.splice(index,1);
+        // this.setstate(list);
+      
+        this.props.updateList(list);
+
+        };
+  
+    
       renderTodo = (todo, index) => {
           return (
               <View style={styles.todoContainer}>
                   <TouchableOpacity onPress={()=>this.toggleTodoCompleted(index)}>
                       <Ionicons name= {todo.completed? "ios-square" : "ios-square-outline"}
+                      
                       size={24}
                      color="#333533"
                      style={{ width: 32 }} />
+                     
                   </TouchableOpacity >
                   <Text style={[styles.todo, 
                     { textDecorationLine: todo.completed ? "line-through" : "none",
                     color:todo.completed ?"#D9D9D9":"#242423"}]}>
                     {todo.title}  
                   </Text>
+                 
+               
+                   <TouchableOpacity  onPress={()=>this.deleteTodo(index)} >
+                     <MaterialIcons name="delete" size={24}  color="black" />
+                   </TouchableOpacity>
+                  
+              
+              
               </View>
           )
       }

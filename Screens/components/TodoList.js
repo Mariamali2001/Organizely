@@ -9,7 +9,7 @@ export default class TodoList extends React.Component {
       toggleAddTodoModal() {
         this.setState({ showListVisible: !this.state.showListVisible });
       }
-    
+     
 
     render(){
         const list = this.props.list;
