@@ -53,8 +53,6 @@ export default function AuthScreen() {
   return (
     <View style={styles.container}>
       {showUserInfo()}
-      <Image  style={{ height:100,width:100,marginBottom:150}}
-      source={require('../assets/logo.png')}/>
       <View style={{ flexDirection: "row"}}>
       
         <View style={styles.divider} />
@@ -104,9 +102,9 @@ export default function AuthScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#E8EDDF',
+    backgroundColor: '#fff',
     alignItems: 'center',
-    // justifyContent: 'center',
+    justifyContent: 'center',
   },
   userInfo: {
     alignItems: 'center',
@@ -115,19 +113,5 @@ const styles = StyleSheet.create({
   profilePic: {
     width: 50,
     height: 50
-  },
-  divider:{
-    backgroundColor: "#284B63",
-    height:1,
-    flex:1,
-    alignSelf:"center",
-    paddingVertical:4,
-  },
-  title: {
-    fontSize:28,
-    fontWeight:"800",
-    color:"#F5CB5C",
-    paddingHorizontal:64
-
   }
 });
