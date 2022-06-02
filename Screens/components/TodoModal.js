@@ -24,16 +24,15 @@ export default class TodoModal extends React.Component {
            this.props.updateList(list)
            this.setState({newTodo:""});
 
-         keyboard.dismiss()  
+        //   keyboard.dismiss()  
     }
 
     deleteTodo=index=>{
         // this.setState({lists: [...this.state.lists,{...list, id :this.state.lists.length -1,todos:[] }]})
         let list=this.props.list
         list.todos.splice(index,1);
-        // this.setstate(list);
+        this.setState({...list});
       
-        this.props.updateList(list);
 
         };
   
