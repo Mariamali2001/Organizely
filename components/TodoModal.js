@@ -20,11 +20,11 @@ export default class TodoModal extends React.Component {
     addTodo=()=>{
            let list = this.props.list
          
-           if (!list.todos.some(todo=>todo.title ===this.state.newTodo)){
+          
             list.todos.push({title:this.state.newTodo , completed:false})
 
             this.props.updateList(list)
-           }
+         
            
           this.setState({newTodo:""});
           Keyboard.dismiss()  
