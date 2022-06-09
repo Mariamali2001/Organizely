@@ -61,16 +61,14 @@ export default function AuthScreen() {
 
   return (
     <View style={styles.container}>
-      <View style={{marginBottom:100 }}>
-      <Image
-        style={{ height: 100, width: 100 }}
-        source={require("../assets/logo.png")}
-      />
+      <View style={{ marginBottom: 100 }}>
+        <Image
+          style={{ height: 100, width: 100 }}
+          source={require("../assets/logo.png")}
+        />
       </View>
-     
       {showUserInfo()}
-      <View style={{ flexDirection: "row"}}>
-      
+      <View style={{ flexDirection: "row" }}>
         <View style={styles.divider} />
         <Text style={{ fontWeight: "500", color: "#284B63" }}>
           {" "}
@@ -117,7 +115,7 @@ export default function AuthScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#E8EDDF",
+    backgroundColor: "#fff",
     alignItems: "center",
     // justifyContent: "center",
   },
@@ -134,7 +132,7 @@ const styles = StyleSheet.create({
     height: 1,
     flex: 1,
     alignSelf: "center",
-    paddingVertical: 3,
+    paddingVertical: 1,
   },
   title: {
     fontSize: 28,

@@ -1,7 +1,7 @@
 export default tempData =[
 {
     id:1,
-    name:"Plan to go to itay",
+    name:"Plan to go to italy",
     color: "#F5CB5C",
     todos: [
         {
@@ -39,5 +39,27 @@ export default tempData =[
 ]
 
 },
+{
+    id:1,
+    name:"It's a note",
+    color: "#F5CB5C",
+    todos: [
+        {
+        title: "Book flight",
+        completed: false
+    },
+     
+    {
+        title: "passport",
+        completed: true
+    },
+
+    {
+        title: "money",
+        completed: true
+    },
+]
+
+}
 
 ]
