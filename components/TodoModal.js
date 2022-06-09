@@ -1,8 +1,7 @@
 import React from "react";
-import {View,StyleSheet,Text,TouchableOpacity,FlatList,SafeAreaView,KeyboardAvoidingView,keyboard,TextInput} from "react-native";
+import {View,StyleSheet,Text,Animated,TouchableOpacity,FlatList,SafeAreaView,KeyboardAvoidingView,Keyboard,TextInput} from "react-native";
 import { AntDesign ,Ionicons} from "@expo/vector-icons";
-import { MaterialIcons } from '@expo/vector-icons';
-
+import { Swipeable } from "react-native-gesture-handler";
 
 
 export default class TodoModal extends React.Component {
@@ -13,32 +12,37 @@ export default class TodoModal extends React.Component {
       
   toggleTodoCompleted=index=>{
     let list=this.props.list
+
     list.todos[index].completed=!list.todos[index].completed;
   
     this.props.updateList(list);
     };
     addTodo=()=>{
            let list = this.props.list
-           list.todos.push({title:this.state.newTodo , completed:false})
+         
+           if (!list.todos.some(todo=>todo.title ===this.state.newTodo)){
+            list.todos.push({title:this.state.newTodo , completed:false})
 
-           this.props.updateList(list)
-           this.setState({newTodo:""});
-
-        //   keyboard.dismiss()  
+            this.props.updateList(list)
+           }
+           
+          this.setState({newTodo:""});
+          Keyboard.dismiss()  
     }
 
-    // deleteTodo=index=>{
-    //     // this.setState({lists: [...this.state.lists,{...list, id :this.state.lists.length -1,todos:[] }]})
-    //     let list=this.props.list
-    //     list.todos.splice(index,1);
-    //     this.setState({...list});
-      
+deleteTodo=index=>{
+  let list = this.props.list;
+  list.todos.splice(index,1)  
 
-    //     };
+  this.props.updateList(list)
+}
   
     
       renderTodo = (todo, index) => {
           return (
+            <Swipeable renderRightActions={(_, dragX) => this.rightActions(dragX,index)}>
+
+           
               <View style={styles.todoContainer}>
                   <TouchableOpacity onPress={()=>this.toggleTodoCompleted(index)}>
                       <Ionicons name= {todo.completed? "ios-square" : "ios-square-outline"}
@@ -55,14 +59,33 @@ export default class TodoModal extends React.Component {
                   </Text>
                  
                
-                   {/* <TouchableOpacity  onPress={()=>this.deleteTodo(index)} >
-                     <MaterialIcons name="delete" size={24}  color="black" />
-                   </TouchableOpacity> */}
-                  
               
               
               </View>
+              </Swipeable>
           )
+      }
+      rightActions =(dragX , index) =>{
+        const scale =dragX.interpolate({
+          inputRange: [-100,0],
+          outputRange:[1,0.9],
+          extrapolate:"clamp"
+        });
+        const opacity =dragX.interpolate({
+          inputRange: [-100,-20,0],
+          outputRange:[1,0.9,0],
+          extrapolate:"clamp"
+        });
+        return (
+          <TouchableOpacity onPress={()=> this.deleteTodo(index)} >
+            <Animated.View style={[styles.deleteButton,{opacity:opacity}]}>
+              <Animated.Text style={{color:"#FFFFF" , fontWeight:"800" , transform:[{scale}]}}>
+                Delete 
+              </Animated.Text>
+
+            </Animated.View>
+          </TouchableOpacity>
+        )
       }
 
     render(){
@@ -92,13 +115,12 @@ export default class TodoModal extends React.Component {
                   </View>
               </View>
 
-              <View style={[styles.section, {flex:3}]}>
+              <View style={[styles.section, {flex:3,marginVertical:16 }]}>
                  <FlatList
                  data={list.todos}
                  renderItem={({item , index})=> this.renderTodo(item, index)}
-                 keyExtractor={(item) => item.title}
-                 contentContainerStyle={{paddingHorizontal: 32,paddingVertical: 64,
-                  }}
+                 keyExtractor={item => item.title}
+                 
                 showsVerticalScrollIndicator={false}
                  />
               </View>
@@ -140,13 +162,14 @@ const styles = StyleSheet.create({
         marginBottom: 16,
       },
       section: {
-        flex: 1,
+      
         alignSelf: "stretch",
       },
       header: {
         marginLeft: 35,
         borderBottomWidth: 4,
         justifyContent: "flex-end",
+        paddingTop:16
       },
       taskCount: {
         color: "333533",
@@ -156,8 +179,7 @@ const styles = StyleSheet.create({
       },
       colorSelect: {
         width: 30,
-        height: 30,
-        
+        height: 30, 
         orderRadius: 4,
       },
 
@@ -166,6 +188,7 @@ const styles = StyleSheet.create({
         paddingHorizontal: 32,
         flexDirection: "row",
         alignItems: "center",
+        paddingVertical:16,
       },
       input: {
         flex: 1,
@@ -186,11 +209,20 @@ const styles = StyleSheet.create({
         paddingVertical: 16,
         flexDirection: "row",
         alignItems: "center",
+        paddingLeft:32
       },
       todo: {
         color: "#242423",
         fontSize: 16,
         fontWeight: "700",
       },
+      deleteButton:{
+        flex:1,
+        backgroundColor:"#CFDBD5",
+        justifyContent:"center",
+        alignItems:"center",
+        width:80,
+
+      }
 })
 

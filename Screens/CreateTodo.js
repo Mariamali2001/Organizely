@@ -40,7 +40,7 @@ export default class CreateTodo extends React.Component {
           <View style={{flexDirection:"row"}}> 
            <View style={styles.divider}/> 
            <Text style={styles.title}>
-          Todo <Text style={{fontWeight:"300",color:'#284B63'}}> Lists</Text>
+          what's in your <Text style={{fontWeight:"300",color:'#284B63'}}> mind</Text>
           </Text>
           
           <View style={styles.divider}/>

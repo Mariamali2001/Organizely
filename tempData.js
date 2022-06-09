@@ -1,7 +1,7 @@
 export default tempData =[
 {
     id:1,
-    name:"Plan to go to itay",
+    name:"Plan to itay",
     color: "#F5CB5C",
     todos: [
         {
