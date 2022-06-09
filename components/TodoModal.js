@@ -27,14 +27,14 @@ export default class TodoModal extends React.Component {
         //   keyboard.dismiss()  
     }
 
-    deleteTodo=index=>{
-        // this.setState({lists: [...this.state.lists,{...list, id :this.state.lists.length -1,todos:[] }]})
-        let list=this.props.list
-        list.todos.splice(index,1);
-        this.setState({...list});
+    // deleteTodo=index=>{
+    //     // this.setState({lists: [...this.state.lists,{...list, id :this.state.lists.length -1,todos:[] }]})
+    //     let list=this.props.list
+    //     list.todos.splice(index,1);
+    //     this.setState({...list});
       
 
-        };
+    //     };
   
     
       renderTodo = (todo, index) => {
@@ -55,9 +55,9 @@ export default class TodoModal extends React.Component {
                   </Text>
                  
                
-                   <TouchableOpacity  onPress={()=>this.deleteTodo(index)} >
+                   {/* <TouchableOpacity  onPress={()=>this.deleteTodo(index)} >
                      <MaterialIcons name="delete" size={24}  color="black" />
-                   </TouchableOpacity>
+                   </TouchableOpacity> */}
                   
               
               
