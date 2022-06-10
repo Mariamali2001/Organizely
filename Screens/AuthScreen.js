@@ -22,9 +22,12 @@ export default function AuthScreen() {
   const [message, setMessage] = React.useState();
 
   const [request, response, promptAsync] = Google.useAuthRequest({
-    androidClientId: "242080826208-67fhgt1dqvb9lo4jfgpt006jk8k4ovsh.apps.googleusercontent.com",
-    iosClientId: "242080826208-riitrtfpcj94sd3cd99dgfqqvp2v143o.apps.googleusercontent.com",
-    expoClientId: "242080826208-67fhgt1dqvb9lo4jfgpt006jk8k4ovsh.apps.googleusercontent.com",
+    androidClientId:
+      "242080826208-67fhgt1dqvb9lo4jfgpt006jk8k4ovsh.apps.googleusercontent.com",
+    iosClientId:
+      "242080826208-riitrtfpcj94sd3cd99dgfqqvp2v143o.apps.googleusercontent.com",
+    expoClientId:
+      "242080826208-67fhgt1dqvb9lo4jfgpt006jk8k4ovsh.apps.googleusercontent.com",
   });
 
   React.useEffect(() => {
@@ -33,7 +36,6 @@ export default function AuthScreen() {
       setAccessToken(response.authentication.accessToken);
     }
   }, [response]);
-
   async function getUserData() {
     let userInfoResponse = await fetch(
       "https://www.googleapis.com/userinfo/v2/me",
@@ -61,16 +63,15 @@ export default function AuthScreen() {
 
   return (
     <View style={styles.container}>
-      <View style={{marginBottom:100 }}>
-      <Image
-        style={{ height: 100, width: 100 }}
-        source={require("../assets/logo.png")}
-      />
+      <View style={{ marginBottom: 100 }}>
+        <Image
+          style={{ height: 100, width: 100 }}
+          source={require("../assets/logo.png")}
+        />
       </View>
-     
+
       {showUserInfo()}
-      <View style={{ flexDirection: "row"}}>
-      
+      <View style={{ flexDirection: "row" }}>
         <View style={styles.divider} />
         <Text style={{ fontWeight: "500", color: "#284B63" }}>
           {" "}
@@ -134,10 +135,10 @@ const styles = StyleSheet.create({
     height: 1,
     flex: 1,
     alignSelf: "center",
-    paddingVertical: 3,
+    paddingVertical: 1,
   },
   title: {
-    fontSize: 28,
+    fontSize: 23,
     fontWeight: "800",
     color: "#F5CB5C",
     paddingHorizontal: 64,
