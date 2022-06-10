@@ -2,7 +2,7 @@ import React from "react";
 import { View, StyleSheet, Text, TouchableOpacity, Modal } from "react-native";
 import TodoModal from "./TodoModal";
 
-export default class TodoList extends React.Component {
+export default class Note extends React.Component {
     state = {
         showListVisible: false,
       };
@@ -13,9 +13,6 @@ export default class TodoList extends React.Component {
 
     render(){
         const list = this.props.list;
-
-        const completedCount = list.todos.filter(todo=> todo.completed).length;
-        const remainingCount = list.todos.length - completedCount;
         return (
          <View>
             <Modal
@@ -36,14 +33,6 @@ export default class TodoList extends React.Component {
               <Text style={styles.listTitle} numberOfLines={1}>
                {list.name}
               </Text>
-              <View style={{ alignItems: "center" }}>
-                <Text style={styles.count}>{remainingCount}</Text>
-                <Text style={styles.subtitle}>Remaining</Text>
-              </View>
-              <View style={{ alignItems: "center" }}>
-                <Text style={styles.count}>{completedCount}</Text>
-                <Text style={styles.subtitle}>completed</Text>
-              </View>
     
             </TouchableOpacity>
             </View>
@@ -57,7 +46,7 @@ export default class TodoList extends React.Component {
 const styles = StyleSheet.create({
     listContainer: {
       paddingHorizontal:16,
-      paddingVertical: 35,
+      paddingVertical: 16,
       borderRadius: 6,
       marginHorizontal: 12,
       width: 200,

@@ -40,21 +40,12 @@ export default class CreateTodo extends React.Component {
           <View style={{flexDirection:"row"}}> 
            <View style={styles.divider}/> 
            <Text style={styles.title}>
-          what's in your <Text style={{fontWeight:"300",color:'#284B63'}}> mind</Text>
+          What's in your <Text style={{fontWeight:"300",color:'#284B63'}}> Mind</Text>
           </Text>
           
           <View style={styles.divider}/>
-          </View>
-
-          <View style={{marginVertical:48}}> 
-          <TouchableOpacity style={styles.addList} onPress={()=>this.toggleAddTodoModal()}>
-              <AntDesign name="plus" size={16} color="#242423" />
-          </TouchableOpacity>
-
-          <Text style={styles.add} > New </Text>
-          </View>
-          
-          <View style={{height:275,paddingLeft:32}}>
+          </View>          
+          <View style={{height:245,paddingLeft:22,paddingTop:30}}>
             <FlatList
                data={this.state.lists}
                keyExtractor={item=>item.name}
@@ -65,6 +56,13 @@ export default class CreateTodo extends React.Component {
                
                />
             </View>
+            <View style={{marginVertical:28}}> 
+          <TouchableOpacity style={styles.addList} onPress={()=>this.toggleAddTodoModal()}>
+              <AntDesign name="plus" size={16} color="#242423" />
+          </TouchableOpacity>
+
+          <Text style={styles.add} >   New </Text>
+          </View>
 
         </View>
     );
@@ -89,7 +87,7 @@ const styles = StyleSheet.create({
         alignSelf:"center"
       },
       title: {
-        fontSize:38,
+        fontSize:37,
         fontWeight:"800",
         color:"#284B63",
         paddingHorizontal:64
@@ -108,6 +106,6 @@ const styles = StyleSheet.create({
         color:"#242423",
         fontWeight:'600',
         fontSize:14,
-        marginTop:8
+        marginTop:6
       }
 })
