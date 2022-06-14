@@ -8,7 +8,7 @@ export default function HomeScreen({ navigation }) {
   // const [Auth, setAuth] = useState<Boolean>(false);
   return (
     <View style={styles.container}>
-      <Image
+      <Image 
         style={{ height: 300, width: 300 }}
         source={require("../assets/logo.png")}
       />
@@ -26,7 +26,8 @@ export default function HomeScreen({ navigation }) {
           />
         </TouchableOpacity>
 
-        <TouchableOpacity >
+        <TouchableOpacity  onPress={() => navigation.navigate("CreateTodo")}>
+          
           <Text
             style={{
               fontSize: 20,
