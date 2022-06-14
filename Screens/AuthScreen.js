@@ -110,6 +110,16 @@ export default function AuthScreen() {
           />
         </AwesomeButton>
       </TouchableOpacity>
+      { accessToken && 
+      <TouchableOpacity onPress={() => navigation.navigate("CreateTodo",{term:userInfo.email, name_person:userInfo.name}) }
+       >
+          <Image
+            style={{ height: 40, width: 60, marginLeft: 260, marginTop:100}}
+            source={require("../assets/arrow.png")}
+          />
+        </TouchableOpacity>
+        
+      }
       <StatusBar style="auto" />
     </View>
   );

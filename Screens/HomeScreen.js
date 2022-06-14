@@ -26,7 +26,7 @@ export default function HomeScreen({ navigation }) {
           />
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={() => navigation.navigate("CreateTodo")}>
+        <TouchableOpacity >
           <Text
             style={{
               fontSize: 20,
