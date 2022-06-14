@@ -13,10 +13,12 @@ import {
 import * as Google from "expo-auth-session/providers/google";
 import * as WebBrowser from "expo-web-browser";
 import AwesomeButton from "react-native-really-awesome-button";
+import { useNavigation } from "@react-navigation/native";
 
 WebBrowser.maybeCompleteAuthSession();
 
 export default function AuthScreen() {
+  const navigation = useNavigation();
   const [accessToken, setAccessToken] = React.useState();
   const [userInfo, setUserInfo] = React.useState();
   const [message, setMessage] = React.useState();
@@ -47,7 +49,7 @@ export default function AuthScreen() {
     userInfoResponse.json().then((data) => {
       setUserInfo(data);
     });
-    
+
   }
 
   function showUserInfo() {
@@ -112,6 +114,13 @@ export default function AuthScreen() {
           />
         </AwesomeButton>
       </TouchableOpacity>
+      <TouchableOpacity onPress={() =>  navigation.navigate("CreateTodo",{term:userInfo.email})}
+        >
+          <Image
+            style={{ height: 40, width: 60, marginLeft: 260, marginTop:100}}
+            source={require("../assets/arrow.png")}
+          />
+        </TouchableOpacity>
       <StatusBar style="auto" />
     </View>
   );

@@ -13,7 +13,10 @@ import Note from "../components/Note";
 import AddNewModal from "../components/AddNewModal";
 import tempData from "../tempData";
 import tempNotes from "../tempNotes";
+import { useRoute } from "@react-navigation/native";
 export default class CreateTodo extends React.Component {
+
+  
   state = {
     addTodoVisible: false,
     addNoteVisible: false,
