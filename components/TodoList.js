@@ -9,7 +9,6 @@ export default class TodoList extends React.Component {
       toggleAddTodoModal() {
         this.setState({ showListVisible: !this.state.showListVisible });
       }
-     
 
     render(){
         const list = this.props.list;
@@ -53,14 +52,13 @@ export default class TodoList extends React.Component {
     
 }
 
-
 const styles = StyleSheet.create({
     listContainer: {
-      paddingHorizontal:16,
-      paddingVertical: 35,
+      paddingHorizontal:10,
+      paddingVertical: 25,
       borderRadius: 6,
       marginHorizontal: 12,
-      width: 200,
+      width: 150,
       alignItems: "center",
     },
     listTitle: {
@@ -70,19 +68,19 @@ const styles = StyleSheet.create({
       alignSelf: "center",
     },
     listTitle: {
-      fontSize: 20,
+      fontSize: 15,
       fontWeight: "700",
       color: "#FFFFFF",
       marginBottom: 18,
     },
     count: {
-      fontSize: 30,
+      fontSize: 20,
       fontWeight: "200",
       color: "#FFFFFF",
     },
     subtitle: {
-      fontSize: 12,
-      fontWeight: "700",
+      fontSize: 10,
+      fontWeight: "500",
       color:"#FFFFFF",
     },
   });

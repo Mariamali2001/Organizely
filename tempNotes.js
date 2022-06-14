@@ -1,15 +1,15 @@
 export default tempData =[
     {
         id:1,
-        name:"sem 6",
-        color: "#F5CB5C",
+        name:"semester 6",
+        color: "#284B63",
         note: "This semester is so cool, and I love SMD course "
     
     },
     
     {
         id:2,
-        name:"study",
+        name:"SMD lecture",
         color: "#CFDBD5",
         note: "This semester is so cool, and I love SMD course "
     

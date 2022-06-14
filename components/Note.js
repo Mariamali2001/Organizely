@@ -4,34 +4,34 @@ import TodoModal from "./TodoModal";
 
 export default class Note extends React.Component {
     state = {
-        showListVisible: false,
+        showNoteVisible: false,
       };
-      toggleAddTodoModal() {
-        this.setState({ showListVisible: !this.state.showListVisible });
+      toggleAddNoteModal() {
+        this.setState({ showNoteVisible: !this.state.showNoteVisible });
       }
      
 
     render(){
-        const list = this.props.list;
+        const note = this.props.note;
         return (
          <View>
             <Modal
           animationType="slide"
-          visible={this.state.showListVisible}
-          onRequestClose={() => this.toggleAddTodoModal()}
+          visible={this.state.showNoteVisible}
+          onRequestClose={() => this.toggleAddNoteModal()}
           >
               <TodoModal
-              list={list}  closeModal={()=> this.toggleAddTodoModal()} 
-              updateList={this.props.updateList}
+              note={note}  closeModal={()=> this.toggleAddNoteModal()} 
+              updateNote={this.props.updateNote}
               />
         </Modal>
                 <TouchableOpacity
-                style={[styles.listContainer, { backgroundColor: list.color }]}
-                onPress={() => this.toggleAddTodoModal()}
+                style={[styles.noteContainer, { backgroundColor: note.color }]}
+                onPress={() => this.toggleAddNoteModal()}
                 >
 
-              <Text style={styles.listTitle} numberOfLines={1}>
-               {list.name}
+              <Text style={styles.noteTitle} numberOfLines={1}>
+               {note.name}
               </Text>
     
             </TouchableOpacity>
@@ -44,34 +44,26 @@ export default class Note extends React.Component {
 
 
 const styles = StyleSheet.create({
-    listContainer: {
+    noteContainer: {
       paddingHorizontal:16,
       paddingVertical: 16,
       borderRadius: 6,
       marginHorizontal: 12,
-      width: 200,
+      width: 150,
+      height:160,
       alignItems: "center",
     },
-    listTitle: {
+    noteTitle: {
       backgroundColor: "#242423",
-      height: 1,
-      flex: 1,
+      // height: 1,
+      // flex: 1,
       alignSelf: "center",
     },
-    listTitle: {
+    noteTitle: {
       fontSize: 20,
+
       fontWeight: "700",
       color: "#FFFFFF",
-      marginBottom: 18,
-    },
-    count: {
-      fontSize: 30,
-      fontWeight: "200",
-      color: "#FFFFFF",
-    },
-    subtitle: {
-      fontSize: 12,
-      fontWeight: "700",
-      color:"#FFFFFF",
+      marginTop: 48,
     },
   });

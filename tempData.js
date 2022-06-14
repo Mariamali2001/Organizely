@@ -19,13 +19,11 @@ export default tempData =[
         completed: true
     },
 ]
-
 },
-
 {
     id:2,
     name:"study",
-    color: "#CFDBD5",
+    color: "#3C6E71",
     todos: [
         {
         title: "math",
@@ -35,9 +33,7 @@ export default tempData =[
         title: "cloud assignment",
         completed: true
     },
-
 ]
-
 },
 
 ]

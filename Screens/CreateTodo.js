@@ -1,111 +1,202 @@
-import React from 'react';
-import { View, StyleSheet, Text ,TouchableOpacity, FlatList, Modal} from 'react-native';
-import {AntDesign} from '@expo/vector-icons';
-import TodoList from '../components/TodoList';
+import React from "react";
+import {
+  View,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  FlatList,
+  Modal,
+} from "react-native";
+import { AntDesign } from "@expo/vector-icons";
+import TodoList from "../components/TodoList";
+import Note from "../components/Note";
 import AddListModal from "../components/AddListModal";
-import tempData from '../tempData';
+import tempData from "../tempData";
+import tempNotes from "../tempNotes";
 export default class CreateTodo extends React.Component {
-  state ={
-    addTodoVisible : false ,
-    lists:tempData
-  }
-  toggleAddTodoModal(){ 
-    this.setState({addTodoVisible: !this.state.addTodoVisible});
-  }
-  renderList=list=>{
-    return <TodoList list={list} updateList={this.updateList}/>
-  }
-  addList = list=>{
-    this.setState({lists: [...this.state.lists,{...list, id :this.state.lists.length + 1,todos:[] }]})
+  state = {
+    addTodoVisible: false,
+    addNoteVisible: false,
+    lists: tempData,
+    notes: tempNotes,
   };
-  updateList = list=>{
-         this.setState({
-           lists:this.state.lists.map(item=>{
-             return item.id === list.id ? list:item
-           })
-         }) 
+  toggleAddTodoModal() {
+    this.setState({ addTodoVisible: !this.state.addTodoVisible });
   }
 
-   render (){
+  toggleAddNoteModal() {
+    this.setState({ addNoteVisible: !this.state.addNoteVisible });
+  }
+
+  renderList = (list) => {
+    return <TodoList list={list} updateList={this.updateList} />;
+  };
+
+  renderNote = (note) => {
+    return <Note note={note} updateNote={this.updateNote} />;
+  };
+
+  addList = (list) => {
+    this.setState({
+      lists: [
+        ...this.state.lists,
+        { ...list, id: this.state.lists.length + 1, todos: [] },
+      ],
+    });
+  };
+  updateList = (list) => {
+    this.setState({
+      lists: this.state.lists.map((item) => {
+        return item.id === list.id ? list : item;
+      }),
+    });
+  };
+
+  addNote = (note) => {
+    this.setState({
+      notes: [
+        ...this.state.notes,
+        { ...note, id: this.state.notes.length + 1, notes: [] },
+      ],
+    });
+  };
+  updateNote = (note) => {
+    this.setState({
+      notes: this.state.notes.map((item) => {
+        return item.id === note.id ? note : item;
+      }),
+    });
+  };
+
+  render() {
     return (
-       
-        <View style={styles.container}>
-          <Modal  animationType="slide"
+      <View style={styles.container}>
+        <Modal
+          animationType="slide"
           visible={this.state.addTodoVisible}
-          onRequestClose={()=>this.toggleAddTodoModal()} 
-         
-          >
-           <AddListModal closeModal={() => this.toggleAddTodoModal()} addList={this.addList}/>
-          </Modal>
-          <View style={{flexDirection:"row"}}> 
-           <View style={styles.divider}/> 
-           <Text style={styles.title}>
-          What's in your <Text style={{fontWeight:"300",color:'#284B63'}}> Mind</Text>
+          onRequestClose={() => this.toggleAddTodoModal()}
+        >
+          <AddListModal
+            closeModal={() => this.toggleAddTodoModal()}
+            addList={this.addList}
+          />
+        </Modal>
+        <Modal
+          animationType="slide"
+          visible={this.state.addNoteVisible}
+          onRequestClose={() => this.toggleAddNoteModal()}
+        >
+          <AddListModal
+            closeModal={() => this.toggleAddNoteModal()}
+            addNote={this.addNote}
+          />
+        </Modal>
+
+        <View style={{ flexDirection: "row", marginBottom: 50 }}>
+          {/* <View style={styles.divider} /> */}
+          <Text style={styles.title}>
+            What's in your{" "}
+            <Text style={{ fontWeight: "300", color: "#284B63" }}> Mind</Text>
           </Text>
-          
-          <View style={styles.divider}/>
-          </View>          
-          <View style={{height:245,paddingLeft:22,paddingTop:30}}>
-            <FlatList
-               data={this.state.lists}
-               keyExtractor={item=>item.name}
-               horizontal={true}
-               showHorizontalScrollIndicator={false}
-               renderItem={({item})=> this.renderList(item)}
-               keyboardShouldPersistTaps="always"
-               
-               />
-            </View>
-            <View style={{marginVertical:28}}> 
-          <TouchableOpacity style={styles.addList} onPress={()=>this.toggleAddTodoModal()}>
-              <AntDesign name="plus" size={16} color="#242423" />
+
+          {/* <View style={styles.divider} /> */}
+        </View>
+
+        <View style={{ flexDirection: "row" }}>
+          <View style={styles.divider} />
+          <Text
+            style={{
+              fontWeight: "700",
+              color: "#284B63",
+              paddingHorizontal: 54,
+            }}
+          >
+            {" "}
+            Your Notes
+          </Text>
+          <View style={styles.divider} />
+        </View>
+        <View style={{ height: 211, paddingLeft: 32, paddingTop: 20 }}>
+          <FlatList
+            data={this.state.notes}
+            keyExtractor={(item) => item.name}
+            horizontal={true}
+            showHorizontalScrollIndicator={false}
+            renderItem={({ item }) => this.renderNote(item)}
+            keyboardShouldPersistTaps="always"
+          />
+        </View>
+        <View style={{ flexDirection: "row" }}>
+          <View style={styles.divider} />
+          <Text
+            style={{
+              fontWeight: "700",
+              color: "#284B63",
+              paddingHorizontal: 54,
+            }}
+          >
+            {" "}
+            Your Checklists
+          </Text>
+          <View style={styles.divider} />
+        </View>
+        <View style={{ height: 225, paddingLeft: 32, paddingTop: 20 }}>
+          <FlatList
+            data={this.state.lists}
+            keyExtractor={(item) => item.name}
+            horizontal={true}
+            showHorizontalScrollIndicator={false}
+            renderItem={({ item }) => this.renderList(item)}
+            keyboardShouldPersistTaps="always"
+          />
+        </View>
+
+        <View style={{ marginVertical: 10 }}>
+          <TouchableOpacity
+            style={styles.addList}
+            onPress={() => this.toggleAddTodoModal()}
+          >
+            <AntDesign name="plus" size={16} color="#242423" />
           </TouchableOpacity>
 
-          <Text style={styles.add} >   New </Text>
-          </View>
-
+          <Text style={styles.new}> New </Text>
         </View>
+      </View>
     );
- 
-   }
-   
+  }
 }
 
 const styles = StyleSheet.create({
-    container:
-    {
-        flex:1,
-        backgroundColor:"#fff",
-        alignItems:"center",
-        justifyContent:"center",
-
-    },
-    divider:{
-        backgroundColor: "#284B63",
-        height:1,
-        flex:1,
-        alignSelf:"center"
-      },
-      title: {
-        fontSize:37,
-        fontWeight:"800",
-        color:"#284B63",
-        paddingHorizontal:64
-    
-      },
-      addList:{
-        borderWidth:2,
-        borderColor:"#284B63",
-        borderRadius:4,
-        padding:16,
-        alignItems:"center",
-        justifyContent:"center"
-    
-      },
-      add:{
-        color:"#242423",
-        fontWeight:'600',
-        fontSize:14,
-        marginTop:6
-      }
-})
+  container: {
+    flex: 1,
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  divider: {
+    backgroundColor: "#284B63",
+    height: 1,
+    flex: 1,
+    alignSelf: "center",
+  },
+  title: {
+    fontSize: 30,
+    fontWeight: "800",
+    color: "#284B63",
+    paddingHorizontal: 94,
+  },
+  addList: {
+    borderWidth: 2,
+    borderColor: "#284B63",
+    borderRadius: 4,
+    padding: 15,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  new: {
+    color: "#284B63",
+    fontWeight: "700",
+    fontSize: 15,
+    // marginTop: 1,
+  },
+});
