@@ -65,7 +65,7 @@ export default class noteModal extends React.Component {
         <Animated.View style={[styles.deleteButton, { opacity: opacity }]}>
           <Animated.Text
             style={{
-              color: "#FFFFF",
+              color: "#FFF",
               fontWeight: "800",
               transform: [{ scale }],
             }}
@@ -121,7 +121,7 @@ export default class noteModal extends React.Component {
               style={[styles.addNote, { backgroundColor: note.color }]}
               onPress={() => this.addNote()}
             >
-              <AntDesign name="plus" size={16} color="#FFFFF" />
+              <AntDesign name="plus" size={16} color="#FFF" />
             </TouchableOpacity>
           </View>
         </SafeAreaView>

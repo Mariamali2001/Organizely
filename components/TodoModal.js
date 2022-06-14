@@ -79,7 +79,7 @@ deleteTodo=index=>{
         return (
           <TouchableOpacity onPress={()=> this.deleteTodo(index)} >
             <Animated.View style={[styles.deleteButton,{opacity:opacity}]}>
-              <Animated.Text style={{color:"#FFFFF" , fontWeight:"800" , transform:[{scale}]}}>
+              <Animated.Text style={{color:"#FFF" , fontWeight:"800" , transform:[{scale}]}}>
                 Delete 
               </Animated.Text>
 
@@ -135,7 +135,7 @@ deleteTodo=index=>{
                   style={[styles.addTodo, { backgroundColor: list.color }]}
                   onPress={()=> this.addTodo()}
                   >
-                  <AntDesign name="plus" size={16} color="#FFFFF" />
+                  <AntDesign name="plus" size={16} color="#FFF" />
                   </TouchableOpacity>
               </View>
               

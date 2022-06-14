@@ -70,17 +70,17 @@ const styles = StyleSheet.create({
     listTitle: {
       fontSize: 15,
       fontWeight: "700",
-      color: "#FFFFFF",
+      color: "#FFF",
       marginBottom: 18,
     },
     count: {
       fontSize: 20,
       fontWeight: "200",
-      color: "#FFFFFF",
+      color: "#FFF",
     },
     subtitle: {
       fontSize: 10,
       fontWeight: "500",
-      color:"#FFFFFF",
+      color:"#FFF",
     },
   });
