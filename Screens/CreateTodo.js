@@ -1,13 +1,26 @@
 import React from 'react';
-import { View, StyleSheet, Text ,TouchableOpacity, FlatList, Modal} from 'react-native';
+import { View, StyleSheet, Text ,TouchableOpacity, FlatList, Modal , alert} from 'react-native';
 import {AntDesign} from '@expo/vector-icons';
 import TodoList from '../components/TodoList';
 import AddListModal from "../components/AddListModal";
 import tempData from '../tempData';
+import Fire from '../Fire';
 export default class CreateTodo extends React.Component {
   state ={
     addTodoVisible : false ,
-    lists:tempData
+    lists:tempData,
+    user:{}
+
+  }
+
+  componentDidMount(){
+    firebase = new Fire((error,user)=>{
+      if(error){
+        return alert("something went wrong")
+      }
+      this.setState({user})
+    });
+    
   }
   toggleAddTodoModal(){ 
     this.setState({addTodoVisible: !this.state.addTodoVisible});
@@ -37,6 +50,12 @@ export default class CreateTodo extends React.Component {
           >
            <AddListModal closeModal={() => this.toggleAddTodoModal()} addList={this.addList}/>
           </Modal>
+
+          <View>
+            <Text>
+             user: {this.state.user.uid}
+            </Text>
+          </View>
           <View style={{flexDirection:"row"}}> 
            <View style={styles.divider}/> 
            <Text style={styles.title}>
