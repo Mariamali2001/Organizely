@@ -16,7 +16,7 @@ import tempData from "../tempData";
 import tempNotes from "../tempNotes";
 import { route } from "@react-navigation/native";
 import AuthScreen from "./AuthScreen";
-import axios from "axios";
+// import axios from "axios";
 
 export default class CreateTodo extends React.Component  {
   
