@@ -13,16 +13,19 @@ import Note from "../components/Note";
 import AddNewModal from "../components/AddNewModal";
 import tempData from "../tempData";
 import tempNotes from "../tempNotes";
-import { useRoute } from "@react-navigation/native";
+import { route } from "@react-navigation/native";
+import AuthScreen from "./AuthScreen";
 export default class CreateTodo extends React.Component {
-
+  
   
   state = {
     addTodoVisible: false,
     addNoteVisible: false,
     lists: tempData,
     notes: tempNotes,
+    
   };
+
   toggleAddTodoModal() {
     this.setState({ addTodoVisible: !this.state.addTodoVisible });
   }
@@ -116,7 +119,7 @@ export default class CreateTodo extends React.Component {
             }}
           >
             {" "}
-            Your Notes
+            Your Notes 
           </Text>
           <View style={styles.divider} />
         </View>
@@ -140,7 +143,7 @@ export default class CreateTodo extends React.Component {
             }}
           >
             {" "}
-            Your Checklists
+            Your Checklists 
           </Text>
           <View style={styles.divider} />
         </View>
@@ -163,7 +166,7 @@ export default class CreateTodo extends React.Component {
             <AntDesign name="plus" size={16} color="#242423" />
           </TouchableOpacity>
 
-          <Text style={styles.new}>   New </Text>
+          <Text style={styles.new}>   New  </Text>
         </View>
       </View>
     );
