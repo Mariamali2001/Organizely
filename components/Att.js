@@ -27,7 +27,6 @@ export default function Att() {
   } else if (!hasCameraPermission) {
     return (<SafeAreaView><Text>Permission for camera not granted.</Text></SafeAreaView>)
   }
-
   const takePicture = async () => {
     const pictureOptions = {
       quality: 1,

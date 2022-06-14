@@ -67,6 +67,16 @@ export default class CreateTodo extends React.Component {
       }),
     });
   };
+  deleteNotes = (note) => {
+    this.state.notes.splice(note.id-1, 1);
+    this.setState({
+      notes: [
+        ...this.state.notes,
+        { ...note, id: this.state.notes.length - 1, notes: [] },
+      ],
+      
+    });  
+  };
 
   render() {
     return (

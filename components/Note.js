@@ -11,6 +11,7 @@ export default class Note extends React.Component {
       toggleAddNoteModal() {
         this.setState({ showNoteVisible: !this.state.showNoteVisible });
       }
+
      
 
     render(){
@@ -25,6 +26,7 @@ export default class Note extends React.Component {
               <NoteModal
               note={note}  closeModal={()=> this.toggleAddNoteModal()} 
               updateNote={this.props.updateNote}
+              // deleteNotes={this.props.deleteNotes}
               />
         </Modal>
                 <TouchableOpacity
@@ -65,7 +67,7 @@ const styles = StyleSheet.create({
       fontSize: 20,
 
       fontWeight: "700",
-      color: "#FFFFFF",
+      color: "#FFF",
       marginTop: 48,
     },
   });

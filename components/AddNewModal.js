@@ -108,7 +108,7 @@ export default class AddNewModal extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#FFFFF",
+    backgroundColor: "#FFF",
     alignItems: "center",
     justifyContent: "center",
   },

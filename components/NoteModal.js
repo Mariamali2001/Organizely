@@ -38,6 +38,7 @@ export default class noteModal extends React.Component {
     this.props.updateNote(note);
   };
 
+
   renderNote = (note, index) => {
     return (
       <Swipeable
@@ -62,10 +63,10 @@ export default class noteModal extends React.Component {
     });
     return (
       <TouchableOpacity onPress={() => this.deleteNote(index)}>
-        <Animated.View style={[styles.deleteButton, { opacity: opacity }]}>
+        <Animated.View style={[styles.deleteButton,{backgroundColor:this.props.note.color}, { opacity: opacity }]}>
           <Animated.Text
             style={{
-              color: "#FFFFF",
+              color: "#FFF",
               fontWeight: "800",
               transform: [{ scale }],
             }}
@@ -88,6 +89,13 @@ export default class noteModal extends React.Component {
             onPress={this.props.closeModal}
           >
             <AntDesign name="close" size={24} color="#353535" />
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            style={{ position: "center", top: 22, right: 142, zIndex: 10 }}
+            onPress={this.props.deleteNotes(this.props.id)}
+          >
+            <AntDesign name="delete" size={25} color="#353535" />
           </TouchableOpacity>
 
           <View
@@ -121,7 +129,7 @@ export default class noteModal extends React.Component {
               style={[styles.addNote, { backgroundColor: note.color }]}
               onPress={() => this.addNote()}
             >
-              <AntDesign name="plus" size={16} color="#FFFFF" />
+              <AntDesign name="plus" size={16} color="#FFF" />
             </TouchableOpacity>
           </View>
         </SafeAreaView>
@@ -199,7 +207,6 @@ const styles = StyleSheet.create({
   },
   deleteButton: {
     flex: 1,
-    backgroundColor: "red",
     justifyContent: "center",
     alignItems: "center",
     width: 80,
