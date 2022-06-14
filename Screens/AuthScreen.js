@@ -47,6 +47,7 @@ export default function AuthScreen() {
     userInfoResponse.json().then((data) => {
       setUserInfo(data);
     });
+    
   }
 
   function showUserInfo() {
@@ -55,7 +56,7 @@ export default function AuthScreen() {
         <View style={styles.userInfo}>
           <Image source={{ uri: userInfo.picture }} style={styles.profilePic} />
           <Text>Welcome {userInfo.name}</Text>
-          <Text>{userInfo.email}</Text>
+          {/* <Text>{userInfo.email}</Text> */}
         </View>
       );
     }
@@ -102,7 +103,8 @@ export default function AuthScreen() {
           }
         >
           <Text style={{ color: "#fff" }}>
-            {accessToken ? "Get User Data" : "Sign in by Google"}{" "}
+            {accessToken ? "View Profile" : "Sign in by Google"}{" "}
+
           </Text>
           <Image
             style={{ height: 20, width: 20 }}
@@ -118,7 +120,7 @@ export default function AuthScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#E8EDDF",
+    backgroundColor: "#FFF",
     alignItems: "center",
     // justifyContent: "center",
   },
@@ -129,6 +131,8 @@ const styles = StyleSheet.create({
   profilePic: {
     width: 50,
     height: 50,
+    borderRadius:20,
+    
   },
   divider: {
     backgroundColor: "#284B63",
