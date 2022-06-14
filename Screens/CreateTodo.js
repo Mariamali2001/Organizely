@@ -9,19 +9,19 @@ export default class CreateTodo extends React.Component {
   state ={
     addTodoVisible : false ,
     lists:tempData,
-    user:{}
+    // user:{}
 
   }
 
-  componentDidMount(){
-    firebase = new Fire((error,user)=>{
-      if(error){
-        return alert("something went wrong")
-      }
-      this.setState({user})
-    });
+  // componentDidMount(){
+  //   firebase = new Fire((error,user)=>{
+  //     if(error){
+  //       return alert("something went wrong")
+  //     }
+  //     this.setState({user})
+  //   });
     
-  }
+  // }
   toggleAddTodoModal(){ 
     this.setState({addTodoVisible: !this.state.addTodoVisible});
   }
