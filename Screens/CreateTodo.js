@@ -159,7 +159,7 @@ export default class CreateTodo extends React.Component {
             <AntDesign name="plus" size={16} color="#242423" />
           </TouchableOpacity>
 
-          <Text style={styles.new}> New </Text>
+          <Text style={styles.new}>   New </Text>
         </View>
       </View>
     );

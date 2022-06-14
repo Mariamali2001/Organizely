@@ -1,6 +1,8 @@
 import React from "react";
 import { View, StyleSheet, Text, TouchableOpacity, Modal } from "react-native";
-import TodoModal from "./TodoModal";
+// import TodoModal from "./TodoModal";
+import NoteModal from "./NoteModal";
+
 
 export default class Note extends React.Component {
     state = {
@@ -20,7 +22,7 @@ export default class Note extends React.Component {
           visible={this.state.showNoteVisible}
           onRequestClose={() => this.toggleAddNoteModal()}
           >
-              <TodoModal
+              <NoteModal
               note={note}  closeModal={()=> this.toggleAddNoteModal()} 
               updateNote={this.props.updateNote}
               />
