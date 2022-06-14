@@ -1,5 +1,7 @@
 import React from "react";
 import { View, StyleSheet, Text, TouchableOpacity, Modal } from "react-native";
+
+import AddListModal from "./AddListModal";
 // import TodoModal from "./TodoModal";
 import NoteModal from "./NoteModal";
 
@@ -69,3 +71,10 @@ const styles = StyleSheet.create({
       marginTop: 48,
     },
   });
+
+
+ 
+
+
+
+  
