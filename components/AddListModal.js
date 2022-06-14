@@ -12,12 +12,13 @@ import { AntDesign } from "@expo/vector-icons";
 
 export default class AddListModal extends React.Component {
   backgroundColors = [
-    "#3C6E71",
-    "#F5CB5C",
-    "#8ecae6",
-    "#353535",
-    "#D9D9D9",
     "#284B63",
+    "#3C6E71",
+    "#606C38",
+    "#F5CB5C",
+    "#5E503F",
+    "#6c757d",
+    "#353535",
   ];
   state = {
     name: "",
