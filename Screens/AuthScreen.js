@@ -13,10 +13,12 @@ import {
 import * as Google from "expo-auth-session/providers/google";
 import * as WebBrowser from "expo-web-browser";
 import AwesomeButton from "react-native-really-awesome-button";
+import { useNavigation } from "@react-navigation/native";
 
 WebBrowser.maybeCompleteAuthSession();
 
 export default function AuthScreen() {
+  const navigation = useNavigation();
   const [accessToken, setAccessToken] = React.useState();
   const [userInfo, setUserInfo] = React.useState();
   const [message, setMessage] = React.useState();
