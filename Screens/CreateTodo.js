@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   FlatList,
   Modal,
+  Alert,
 } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 import TodoList from "../components/TodoList";
@@ -16,9 +17,16 @@ import tempNotes from "../tempNotes";
 import { route } from "@react-navigation/native";
 import AuthScreen from "./AuthScreen";
 import axios from "axios";
-export default class CreateTodo extends React.Component {
+
+export default class CreateTodo extends React.Component  {
   
-  
+   constructor(props) {
+      super(props);
+      this.state={
+        response:"Click to connect to server"
+      }
+    // this.params = this.props.navigation.state.params;
+}
   state = {
     addTodoVisible: false,
     addNoteVisible: false,
@@ -75,6 +83,22 @@ export default class CreateTodo extends React.Component {
     });
   };
 
+  connect = async ()=>{
+    const URL = "https://localhost:3000/notes"
+    try {
+      const response = await fetch (URL)
+      if (response.status!=200){
+        throw new Error("something is wrong")
+      }
+      const responseText = await response.text();
+      this.setState({response: responseText})
+
+    } catch(error){
+      Alert.alert(error.message)
+    }
+  }
+  
+   
   render() {
     return (
       <View style={styles.container}>
@@ -168,6 +192,7 @@ export default class CreateTodo extends React.Component {
           </TouchableOpacity>
 
           <Text style={styles.new}>    New</Text>
+          
         </View>
       </View>
     );
@@ -208,3 +233,4 @@ const styles = StyleSheet.create({
     // marginTop: 1,
   },
 });
+
