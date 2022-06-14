@@ -5,7 +5,6 @@ import {
   Text,
   Animated,
   TouchableOpacity,
-  Flatnote,
   SafeAreaView,
   KeyboardAvoidingView,
   Keyboard,
@@ -13,6 +12,8 @@ import {
 } from "react-native";
 import { AntDesign, Ionicons } from "@expo/vector-icons";
 import { FlatList, Swipeable } from "react-native-gesture-handler";
+import ImagePicker from 'react-native-image-picker';
+
 
 export default class noteModal extends React.Component {
   state = {
@@ -22,7 +23,7 @@ export default class noteModal extends React.Component {
   addNote = () => {
     let note = this.props.note;
 
-    note.push({ title: this.state.newNote });
+    note.notes.push({ title: this.state.newNote });
 
     this.props.updateNote(note);
 
@@ -193,7 +194,7 @@ const styles = StyleSheet.create({
   },
   note: {
     color: "#242423",
-    fontSize: 16,
+    fontSize:20,
     fontWeight: "500",
   },
   deleteButton: {

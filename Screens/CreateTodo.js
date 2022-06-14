@@ -10,7 +10,7 @@ import {
 import { AntDesign } from "@expo/vector-icons";
 import TodoList from "../components/TodoList";
 import Note from "../components/Note";
-import AddListModal from "../components/AddListModal";
+import AddNewModal from "../components/AddNewModal";
 import tempData from "../tempData";
 import tempNotes from "../tempNotes";
 export default class CreateTodo extends React.Component {
@@ -76,9 +76,10 @@ export default class CreateTodo extends React.Component {
           visible={this.state.addTodoVisible}
           onRequestClose={() => this.toggleAddTodoModal()}
         >
-          <AddListModal
+          <AddNewModal
             closeModal={() => this.toggleAddTodoModal()}
             addList={this.addList}
+            addNote={this.addNote}
           />
         </Modal>
         <Modal
@@ -86,10 +87,10 @@ export default class CreateTodo extends React.Component {
           visible={this.state.addNoteVisible}
           onRequestClose={() => this.toggleAddNoteModal()}
         >
-          <AddListModal
+          {/* <AddNewModal
             closeModal={() => this.toggleAddNoteModal()}
             addNote={this.addNote}
-          />
+          /> */}
         </Modal>
 
         <View style={{ flexDirection: "row", marginBottom: 50 }}>
