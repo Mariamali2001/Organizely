@@ -119,7 +119,7 @@ deleteTodo=index=>{
                  <FlatList
                  data={list.todos}
                  renderItem={({item , index})=> this.renderTodo(item, index)}
-                 keyExtractor={item => item.title}
+                 keyExtractor={(_,index) => index.toString()}
                  
                 showsVerticalScrollIndicator={false}
                  />

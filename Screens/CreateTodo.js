@@ -1,27 +1,41 @@
 import React from 'react';
-import { View, StyleSheet, Text ,TouchableOpacity, FlatList, Modal , alert} from 'react-native';
+import { View, StyleSheet, Text ,TouchableOpacity, FlatList, Modal , alert,ActivityIndicator} from 'react-native';
 import {AntDesign} from '@expo/vector-icons';
 import TodoList from '../components/TodoList';
 import AddListModal from "../components/AddListModal";
 import tempData from '../tempData';
 import Fire from '../Fire';
+
+import firebase from 'firebase';
 export default class CreateTodo extends React.Component {
   state ={
     addTodoVisible : false ,
     lists:tempData,
-    // user:{}
+    user:{},
+    loading :true
+
 
   }
 
-  // componentDidMount(){
-  //   firebase = new Fire((error,user)=>{
-  //     if(error){
-  //       return alert("something went wrong")
-  //     }
-  //     this.setState({user})
-  //   });
-    
-  // }
+  componentDidMount(){
+    firebase = new Fire((error,user)=>{
+      if(error){
+        return alert("something went wrong")
+      }
+  firebase.getLists(lists=>{
+    this.setState({lists, user},() =>{
+      this.setState({loading:false})
+
+})
+})
+    this.setState({user})
+  });
+
+}
+
+componentWillUnmount(){
+  firebase.detach();
+}
   toggleAddTodoModal(){ 
     this.setState({addTodoVisible: !this.state.addTodoVisible});
   }
@@ -42,6 +56,16 @@ export default class CreateTodo extends React.Component {
   
 
    render (){
+    if (this.state.loading)
+{
+  return (
+    <View style={styles.container}>
+      <ActivityIndicator size="large"  color="#f1243f"/>
+
+
+    </View>
+  )
+}
     return (
        
         <View style={styles.container}>
@@ -69,7 +93,7 @@ export default class CreateTodo extends React.Component {
           <View style={{height:245,paddingLeft:22,paddingTop:30}}>
             <FlatList
                data={this.state.lists}
-               keyExtractor={item=>item.name}
+               keyExtractor={item=>item.id.toString()}
                horizontal={true}
                showHorizontalScrollIndicator={false}
                renderItem={({item})=> this.renderList(item)}
