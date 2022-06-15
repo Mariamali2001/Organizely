@@ -34,7 +34,7 @@ export default class Note extends React.Component {
                 style={[styles.noteContainer, { backgroundColor: note.color }]}
                 onPress={() => this.toggleAddNoteModal()}
                 >
-              <Text style={styles.noteTitle} numberOfLines={1}>
+              <Text style={styles.noteTitle} numberOfLines={4}>
                {note.name}
               </Text>
     
@@ -52,20 +52,24 @@ const styles = StyleSheet.create({
       paddingHorizontal:16,
       paddingVertical: 16,
       borderRadius: 6,
+      flexWrap:"wrap",
       marginHorizontal: 12,
       width: 150,
       height:160,
       alignItems: "center",
+      alignContent:"center"
     },
     noteTitle: {
       backgroundColor: "#242423",
-      // height: 1,
-      // flex: 1,
+      height: 2,
+      alignContent:"center",
+      flexShrink: 1,
       alignSelf: "center",
+
     },
     noteTitle: {
+      textAlign:"center",
       fontSize: 20,
-
       fontWeight: "700",
       color: "#FFF",
       marginTop: 48,

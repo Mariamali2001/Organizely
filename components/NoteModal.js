@@ -14,7 +14,6 @@ import { AntDesign, Ionicons } from "@expo/vector-icons";
 import { FlatList, Swipeable } from "react-native-gesture-handler";
 // import ImagePicker from 'react-native-image-picker';
 
-
 export default class noteModal extends React.Component {
   state = {
     newNote: "",
@@ -93,11 +92,11 @@ export default class noteModal extends React.Component {
 
           <TouchableOpacity
             style={{ position: "center", top: 22, right: 142, zIndex: 10 }}
-            onPress={this.props.deleteNotes(note)}
+            // onPress={this.props.deleteNotes(note)}
+            onPress={this.props.closeModal}
           >
             <AntDesign name="delete" size={25} color="#353535" />
           </TouchableOpacity>
-
           <View
             style={[
               styles.section,

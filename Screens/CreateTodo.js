@@ -45,8 +45,8 @@ export default class CreateTodo extends React.Component {
   addList = (list) => {
     this.setState({
       lists: [
-        ...this.state.lists,
         { ...list, id: this.state.lists.length + 1, todos: [] },
+        ...this.state.lists,
       ],
     });
   };
@@ -61,8 +61,9 @@ export default class CreateTodo extends React.Component {
   addNote = (note) => {
     this.setState({
       notes: [
-        ...this.state.notes,
+        
         { ...note, id: this.state.notes.length + 1, notes: [] },
+        ...this.state.notes,
       ],
     });
   };
@@ -77,7 +78,7 @@ export default class CreateTodo extends React.Component {
     this.state.notes.length!==0 &&(
     this.setState({
       notes: this.state.notes.map((item) => {
-       return  item.id === note.id ? this.state.notes.splice(note.id-1, 1) : item;
+       return  item.id === note.id ? this.state.notes.splice(note.id, 1) : item;
       }),
     }));
     this.setState({
@@ -116,7 +117,7 @@ export default class CreateTodo extends React.Component {
         <View style={{ flexDirection: "row", marginBottom: 50 }}>
           {/* <View style={styles.divider} /> */}
           <Text style={styles.title}>
-            What's in your{" "}
+            What's On Your{" "}
             <Text style={{ fontWeight: "300", color: "#284B63" }}> Mind</Text>
           </Text>
 
@@ -180,7 +181,7 @@ export default class CreateTodo extends React.Component {
             <AntDesign name="plus" size={16} color="#242423" />
           </TouchableOpacity>
 
-          <Text style={styles.new}> New </Text>
+          <Text style={styles.new}>  New </Text>
         </View>
       </View>
     );
