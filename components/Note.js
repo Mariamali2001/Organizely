@@ -24,16 +24,16 @@ export default class Note extends React.Component {
           onRequestClose={() => this.toggleAddNoteModal()}
           >
               <NoteModal
-              note={note}  closeModal={()=> this.toggleAddNoteModal()} 
+              note={note} 
+              closeModal={()=> this.toggleAddNoteModal()} 
               updateNote={this.props.updateNote}
-              // deleteNotes={this.props.deleteNotes}
+              deleteNotes={this.props.deleteNotes}
               />
         </Modal>
                 <TouchableOpacity
                 style={[styles.noteContainer, { backgroundColor: note.color }]}
                 onPress={() => this.toggleAddNoteModal()}
                 >
-
               <Text style={styles.noteTitle} numberOfLines={1}>
                {note.name}
               </Text>

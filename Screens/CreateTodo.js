@@ -33,7 +33,13 @@ export default class CreateTodo extends React.Component {
   };
 
   renderNote = (note) => {
-    return <Note note={note} updateNote={this.updateNote} />;
+    return (
+      <Note
+        note={note}
+        updateNote={this.updateNote}
+        deleteNotes={this.deleteNotes}
+      />
+    );
   };
 
   addList = (list) => {
@@ -68,15 +74,19 @@ export default class CreateTodo extends React.Component {
     });
   };
   deleteNotes = (note) => {
-    this.state.notes.splice(note.id-1, 1);
+    this.state.notes.length!==0 &&(
     this.setState({
-      notes: [
-        ...this.state.notes,
-        { ...note, id: this.state.notes.length - 1, notes: [] },
-      ],
-      
-    });  
-  };
+      notes: this.state.notes.map((item) => {
+       return  item.id === note.id ? this.state.notes.splice(note.id-1, 1) : item;
+      }),
+    }));
+    this.setState({
+      notes: this.state.notes.map((item) => {
+        return item.id === note.id ? note : item;
+      }),
+    });
+  }
+  
 
   render() {
     return (
@@ -170,7 +180,7 @@ export default class CreateTodo extends React.Component {
             <AntDesign name="plus" size={16} color="#242423" />
           </TouchableOpacity>
 
-          <Text style={styles.new}>   New </Text>
+          <Text style={styles.new}> New </Text>
         </View>
       </View>
     );
