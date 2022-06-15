@@ -104,7 +104,7 @@ export default function AuthScreen() {
           }
         >
           <Text style={{ color: "#fff" }}>
-            {accessToken ? "Get User Data" : "Sign in by Google"}{" "}
+            {accessToken ? "View Profile" : "Sign in by Google"}{" "}
           </Text>
           <Image
             style={{ height: 20, width: 20 }}
@@ -141,6 +141,7 @@ const styles = StyleSheet.create({
   profilePic: {
     width: 50,
     height: 50,
+    borderRadius:50
   },
   divider: {
     backgroundColor: "#284B63",
