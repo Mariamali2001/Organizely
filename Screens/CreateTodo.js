@@ -83,20 +83,22 @@ export default class CreateTodo extends React.Component  {
     });
   };
 
-  connect = async ()=>{
-    const URL = "https://localhost:3000/notes"
-    try {
-      const response = await fetch (URL)
-      if (response.status!=200){
-        throw new Error("something is wrong")
-      }
-      const responseText = await response.text();
-      this.setState({response: responseText})
+  // connect = async ()=>{
+  //   const URL = "https://localhost:3000/notes"
+  //   try {
+  //     const response = await fetch (URL)
+  //     if (response.status!=200){
+  //       throw new Error("something is wrong")
+  //     }
+  //     const responseText = await response.text();
+  //     this.setState({response: responseText})
 
-    } catch(error){
-      Alert.alert(error.message)
-    }
-  }
+  //   } catch(error){
+  //     Alert.alert(error.message)
+  //   }
+  // }
+
+  
   
    
   render() {
