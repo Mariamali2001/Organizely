@@ -1,9 +1,9 @@
 export default tempData =[
     {
         id:3,
-        name:"Message to dr.Amr🥰",
+        name:"Message to\n dr.Amr🥰",
         color: "#6c757d",
-        notes: [{title: " Thank you for making this semester light and enjoyable, I hope we make you proud :)"}]
+        notes: [{title: " Thank you for making this semester light and enjoyable hope we make you proud :)"}]
     
     },
     {

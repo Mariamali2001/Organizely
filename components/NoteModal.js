@@ -90,13 +90,13 @@ export default class noteModal extends React.Component {
             <AntDesign name="close" size={24} color="#353535" />
           </TouchableOpacity>
 
-          <TouchableOpacity
+          {/* <TouchableOpacity
             style={{ position: "center", top: 22, right: 142, zIndex: 10 }}
             // onPress={this.props.deleteNotes(note)}
             onPress={this.props.closeModal}
           >
             <AntDesign name="delete" size={25} color="#353535" />
-          </TouchableOpacity>
+          </TouchableOpacity> */}
           <View
             style={[
               styles.section,
